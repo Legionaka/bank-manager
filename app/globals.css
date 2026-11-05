@@ -1,26 +1,145 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #05080d;
+  --foreground: #f3f6fb;
+  --muted: #a3acba;
+  --panel: #0d1218;
+  --panel-alt: #111922;
+  --panel-soft: #0c141c;
+  --panel-border: #2b3744;
+  --card-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+  --primary: #e8edf4;
+  --primary-soft: #1b2430;
+  --accent: #c0c7d1;
+  --success: #9ad3b2;
+  --warning: #d0c7a3;
+  --danger: #e3a4a7;
+  --surface: #0d131a;
+  --surface-strong: #090d12;
+  --button: #dfe3e9;
+  --button-hover: #edf2f7;
+  --button-strong: #e8edf4;
+  --button-strong-text: #0a0d12;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+  margin: 0;
+  min-height: 100vh;
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+main {
+  width: min(1200px, calc(100% - 2rem));
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+nav {
+  width: 100%;
+  background: rgba(9, 13, 18, 0.94);
+  border-bottom: 1px solid var(--panel-border);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+input,
+select {
+  background: var(--panel-alt);
+  border: 1px solid var(--panel-border);
+  color: var(--foreground);
+  width: 100%;
+  padding: 0.85rem 0.9rem;
+  border-radius: 12px;
+}
+
+input::placeholder {
+  color: var(--muted);
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid rgba(191, 201, 214, 0.18);
+  border-color: rgba(191, 201, 214, 0.5);
+}
+
+button {
+  border: 1px solid transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, opacity 0.15s ease;
+}
+
+button:hover {
+  opacity: 0.98;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+@media (max-width: 640px) {
+  main {
+    width: min(100% - 1rem, 1200px);
+  }
+
+  nav {
+    padding: 0.9rem 1rem !important;
+  }
+
+  nav > div {
+    gap: 0.5rem !important;
+  }
+
+  nav a,
+  nav button {
+    font-size: 0.95rem;
+  }
 }

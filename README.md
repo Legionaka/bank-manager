@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bank Statement Manager
 
-## Getting Started
+A simple Next.js app for importing Capitec CSV bank statements, assigning transactions to people, and tracking shared-card balances.
 
-First, run the development server:
+## Live checklist
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+1. Create a Supabase project at https://supabase.com
+2. In Supabase, open the SQL editor and run the schema from `supabase/schema.sql`
+3. In Authentication > Providers, enable Email/Password
+4. Copy the Project URL and the anon/public key from your project settings
+5. Create `.env.local` with:
+
+```env
+NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+6. Start the app:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+7. Sign up, add people, upload a CSV, and create rules for automatic matching
+8. Review the dashboard and transaction list to confirm balances and allocations
 
-## Learn More
+## Practical tools included
 
-To learn more about Next.js, take a look at the following resources:
+- CSV upload and preview
+- One-click rule matching during import
+- Person management with default `Unsorted` bucket
+- Transaction assignment and review
+- Dashboard totals for each person and total spend by category
+- Empty states for no-data scenarios
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Important notes
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- Use the browser-safe public/anon key in the frontend only
+- Keep the service-role/secret key server-side only
+- CSV parsing happens in the browser for simplicity and speed
+- Auth and persistence are handled by Supabase
 
-## Deploy on Vercel
+## Setup
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm install
+npm run dev
+```
